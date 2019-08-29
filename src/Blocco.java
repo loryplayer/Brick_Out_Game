@@ -16,7 +16,9 @@ class Blocco extends Rectangle {
          movY=3;
         this.width=l;
         this.height=al;
+//ciao
 
+        /*34234*/
         try {
             bloc= ImageIO.read(new File("immagini/"+im));
             res1= ImageIO.read(new File("immagini/BloccoRe2.png"));
