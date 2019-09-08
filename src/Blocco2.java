@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
+import java.security.Key;
 import java.util.ArrayList;
 
 public class
@@ -20,9 +21,8 @@ Blocco2 extends JPanel implements KeyListener, MouseListener {
     private Timer TIMER;
     private USI USC;
     static  JFrame TIM;
-    private int R=0;
-    private int b=10;
-    static int L=0,p=0,pun=0,Tp=0,Bd=0,Sc=1,Bloc=0,bl,Es=0,Fin=1,fuori=0,F=1;
+    private int b=10,R=0;
+    static int L=0,p=0,pun=0,Tp=0,Bd=0,Sc=1,Bloc=0,bl,Es=0,Fin=1,fuori=0,F=1,escape;
     static String difficlt;
     private JPanel PAN;
 
@@ -225,32 +225,30 @@ public  void paintComponent(Graphics g){
                         }
                     }).start();
 
-                }
-                if ((e.getKeyCode() == KeyEvent.VK_RIGHT)&&(e.getKeyCode()!=KeyEvent.VK_LEFT )&& barra.x < getWidth() - barra.width - 45 && p == 1) {
+                }if(L!=1) {
+                if ((e.getKeyCode() == KeyEvent.VK_RIGHT) && (e.getKeyCode() != KeyEvent.VK_LEFT) && barra.x < getWidth() - barra.width - 45 && p == 1) {
                     Tp++;
-
-                    ControlloTasti.frecciaDpremuto=true;
-                    avanti(25);
+                    ControlloTasti.frecciaDpremuto = true;
+                    avanti(30);
 
                 }
-                if ((e.getKeyCode() == KeyEvent.VK_LEFT)&&(e.getKeyCode()!=KeyEvent.VK_RIGHT) && barra.x >31 && p == 1) {
+                if ((e.getKeyCode() == KeyEvent.VK_LEFT) && (e.getKeyCode() != KeyEvent.VK_RIGHT) && barra.x > 31 && p == 1) {
                     Tp++;
-                    ControlloTasti.frecciaSpremuto=true;
-                    indietro(25);
+                    ControlloTasti.frecciaSpremuto = true;
+                    indietro(30);
 
                 }
-                if((e.getKeyCode()==KeyEvent.VK_D )&&(e.getKeyCode()!=KeyEvent.VK_A)&& barra.x < getWidth() - barra.width - 45 && p == 1) {
+                if ((e.getKeyCode() == KeyEvent.VK_D) && (e.getKeyCode() != KeyEvent.VK_A) && barra.x < getWidth() - barra.width - 45 && p == 1) {
                     Tp++;
                     ControlloTasti.Dpremuto = true;
-                    avanti(25);
-                }else
-                if((e.getKeyCode()==KeyEvent.VK_A)&&(e.getKeyCode()!=KeyEvent.VK_D )&& barra.x >31 && p == 1)
-                {
+                    avanti(30);
+                } else if ((e.getKeyCode() == KeyEvent.VK_A) && (e.getKeyCode() != KeyEvent.VK_D) && barra.x > 31 && p == 1) {
                     Tp++;
-                    ControlloTasti.Apremuto=true;
-                    indietro(25);
+                    ControlloTasti.Apremuto = true;
+                    indietro(30);
                 }
                 break;
+            }
             case "2":
                 if (e.getKeyCode() == KeyEvent.VK_ENTER && (p != 1)) {
                     ControlloTasti.inviopremuto=true;
@@ -270,32 +268,31 @@ public  void paintComponent(Graphics g){
                     }).start();
 
                 }
-                if ((e.getKeyCode() == KeyEvent.VK_RIGHT)&&(e.getKeyCode()!=KeyEvent.VK_LEFT )&& barra.x < getWidth() - barra.width - 45 && p == 1) {
-                    Tp++;
+                if(L!=1) {
+                    if ((e.getKeyCode() == KeyEvent.VK_RIGHT) && (e.getKeyCode() != KeyEvent.VK_LEFT) && barra.x < getWidth() - barra.width - 45 && p == 1) {
+                        Tp++;
 
-                    ControlloTasti.frecciaDpremuto=true;
-                    avanti(28);
+                        ControlloTasti.frecciaDpremuto = true;
+                        avanti(32);
 
+                    }
+                    if ((e.getKeyCode() == KeyEvent.VK_LEFT) && (e.getKeyCode() != KeyEvent.VK_RIGHT) && barra.x > 31 && p == 1) {
+                        Tp++;
+                        ControlloTasti.frecciaSpremuto = true;
+                        indietro(32);
+
+                    }
+                    if ((e.getKeyCode() == KeyEvent.VK_D) && (e.getKeyCode() != KeyEvent.VK_A) && barra.x < getWidth() - barra.width - 45 && p == 1) {
+                        Tp++;
+                        ControlloTasti.Dpremuto = true;
+                        avanti(32);
+                    } else if ((e.getKeyCode() == KeyEvent.VK_A) && (e.getKeyCode() != KeyEvent.VK_D) && barra.x > 31 && p == 1) {
+                        Tp++;
+                        ControlloTasti.Apremuto = true;
+                        indietro(32);
+                    }
+                    break;
                 }
-                if ((e.getKeyCode() == KeyEvent.VK_LEFT)&&(e.getKeyCode()!=KeyEvent.VK_RIGHT) && barra.x >31 && p == 1) {
-                    Tp++;
-                    ControlloTasti.frecciaSpremuto=true;
-                    indietro(28);
-
-                }
-                if((e.getKeyCode()==KeyEvent.VK_D )&&(e.getKeyCode()!=KeyEvent.VK_A)&& barra.x < getWidth() - barra.width - 45 && p == 1) {
-                    Tp++;
-                    ControlloTasti.Dpremuto = true;
-                    avanti(28);
-                }else
-                if((e.getKeyCode()==KeyEvent.VK_A)&&(e.getKeyCode()!=KeyEvent.VK_D )&& barra.x >31 && p == 1)
-                {
-                    Tp++;
-                    ControlloTasti.Apremuto=true;
-                    indietro(28);
-                }
-
-                break;
             case "3":
                 if (e.getKeyCode() == KeyEvent.VK_ENTER && (p != 1)) {
                     ControlloTasti.inviopremuto=true;
@@ -313,35 +310,34 @@ public  void paintComponent(Graphics g){
                         }
                     }).start();
 
-                }
-                if ((e.getKeyCode() == KeyEvent.VK_RIGHT)&&(e.getKeyCode()!=KeyEvent.VK_LEFT )&& barra.x < getWidth() - barra.width - 45 && p == 1) {
+                }if(L!=1) {
+                if ((e.getKeyCode() == KeyEvent.VK_RIGHT) && (e.getKeyCode() != KeyEvent.VK_LEFT) && barra.x < getWidth() - barra.width - 45 && p == 1) {
                     Tp++;
 
-                    ControlloTasti.frecciaDpremuto=true;
-                    avanti(30);
+                    ControlloTasti.frecciaDpremuto = true;
+                    avanti(35);
 
                 }
-                if ((e.getKeyCode() == KeyEvent.VK_LEFT)&&(e.getKeyCode()!=KeyEvent.VK_RIGHT) && barra.x >31 && p == 1) {
+                if ((e.getKeyCode() == KeyEvent.VK_LEFT) && (e.getKeyCode() != KeyEvent.VK_RIGHT) && barra.x > 31 && p == 1) {
                     Tp++;
-                    ControlloTasti.frecciaSpremuto=true;
-                    indietro(30);
+                    ControlloTasti.frecciaSpremuto = true;
+                    indietro(35);
 
                 }
-                if((e.getKeyCode()==KeyEvent.VK_D )&&(e.getKeyCode()!=KeyEvent.VK_A)&& barra.x < getWidth() - barra.width - 45 && p == 1) {
+                if ((e.getKeyCode() == KeyEvent.VK_D) && (e.getKeyCode() != KeyEvent.VK_A) && barra.x < getWidth() - barra.width - 45 && p == 1) {
                     Tp++;
                     ControlloTasti.Dpremuto = true;
-                    avanti(30);
-                }else
-                if((e.getKeyCode()==KeyEvent.VK_A)&&(e.getKeyCode()!=KeyEvent.VK_D )&& barra.x >31 && p == 1)
-                {
+                    avanti(35);
+                } else if ((e.getKeyCode() == KeyEvent.VK_A) && (e.getKeyCode() != KeyEvent.VK_D) && barra.x > 31 && p == 1) {
                     Tp++;
-                    ControlloTasti.Apremuto=true;
-                    indietro(30);
+                    ControlloTasti.Apremuto = true;
+                    indietro(35);
                 }
-
                 break;
+            }
         }
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE&&Es!=1&&L!=1) {
+            escape=1;
             ControlloTasti.escpremuto=true;
             try {
                 Thread.sleep(100);
@@ -412,15 +408,15 @@ public  void paintComponent(Graphics g){
             Palla.add(palla);
         }
         for (int i = 0; i < b; i++)
-            blocchi.add(new Blocco((int) (Math.random() * 850),30+ (int) (Math.random() * 500), RAN1, RAN1, "BloccoB.png"));
+            blocchi.add(new Blocco((int) (50+Math.random() * 850),50+ (int) (Math.random() * 500), RAN1, RAN1, "BloccoB.png"));
         for (int i = 0; i <b; i++)
-            blocchi.add(new Blocco((int) (Math.random() * 850),30+ (int) (Math.random() * 500), RAN2, RAN2, "BloccoR.png"));
+            blocchi.add(new Blocco((int) (50+Math.random() * 850),50+ (int) (Math.random() * 500), RAN2, RAN2, "BloccoR.png"));
         for (int i = 0; i < b; i++)
-            blocchi.add(new Blocco((int) (Math.random() * 850),30+ (int) (Math.random() * 500), RAN3, RAN3, "BloccoV.png"));
+            blocchi.add(new Blocco((int) (50+Math.random() * 850),50+ (int) (Math.random() * 500), RAN3, RAN3, "BloccoV.png"));
         for (int i = 0; i <b ; i++)
-            blocchi.add(new Blocco((int) (Math.random() * 850),30+ (int) (Math.random() * 500), RAN4, RAN4, "BloccoG.png"));
+            blocchi.add(new Blocco((int) (50+Math.random() * 850),50+ (int) (Math.random() * 500), RAN4, RAN4, "BloccoG.png"));
         for (int i = 0; i < b; i++) {
-            blocchiR.add(new Blocco((int) (Math.random() * 850),30+ (int) (Math.random() * 500), RAN5, RAN5, "BloccoRe1.png"));
+            blocchiR.add(new Blocco((int) (50+Math.random() * 850),50+ (int) (Math.random() * 500), RAN5, RAN5, "BloccoRe1.png"));
             bl=blocchi.size()+blocchiR.size()-pun;
             update();
         }
@@ -534,7 +530,7 @@ public  void paintComponent(Graphics g){
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if(fuori!=1&&p==1) {
+        if(fuori!=1&&p==1&&escape!=1) {
             fuori = 1;
             Uscita();
         }

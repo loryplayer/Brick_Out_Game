@@ -23,7 +23,7 @@ public class Timer extends JPanel
     private JLabel PN2;
     private JLabel BD2;
     private String s1,s2,s3,s4,s5,s6,s7,s8,s9;
-    private int Tp;
+    private int Tp, l;
     static  int pun,Bd,TimeS=0,TimeM=0,Lo=0;
     static int NewPun1=0, NewBloc1=0,NewScherm1=0,NewPun2=0, NewBloc2=0,NewScherm2=0,NewPun3=0, NewBloc3=0,NewScherm3=0;
     private Color ColN=new Color(27, 187, 44);
@@ -50,13 +50,13 @@ public class Timer extends JPanel
                 if (filemo.createNewFile()) {
                     NewPun1 = 0;
                     NewBloc1 = 0;
-                    NewScherm1 = 0;
+                    NewScherm1 = 1;
                     NewPun2 = 0;
                     NewBloc2 = 0;
-                    NewScherm2 = 0;
+                    NewScherm2 = 1;
                     NewPun3 = 0;
                     NewBloc3 = 0;
-                    NewScherm3 = 0;
+                    NewScherm3 = 1;
                 }
             } else {
                 try {
@@ -135,7 +135,7 @@ private void Loop()
     new Thread(() -> {
         while (true)
         {
-        if(Blocco2.Tp!=0) {
+        if(Blocco2.Tp!=0&&Blocco2.L!=1) {
             try {
                 update();
                 TT1.setText(TimeM+" : "+TimeS);
@@ -161,85 +161,91 @@ void update() throws FileNotFoundException {
     BD1.setText(String.valueOf(Blocco2.pun));
     SC1.setText(String.valueOf(Blocco2.Sc));
     BR1.setText(Blocco2.Bloc+" / "+Blocco2.bl);
-    switch (Blocco2.difficlt) {
-        case "Normale":
-            DIF1.setForeground(ColN);
-            DIFF.setForeground(ColN);
-            if (Blocco2.Bd < NewPun1) {
-                PN2.setText("    "+"Record: "+NewPun1);
+    if(l!=1) {
+        switch (Blocco2.difficlt) {
+            case "Normale":
+                DIF1.setForeground(ColN);
+                DIFF.setForeground(ColN);
+                if (Blocco2.Bd < NewPun1) {
+                    PN2.setText("    " + "Record: " + NewPun1);
 
-            } else if (Blocco2.Bd == NewPun1) {
-                PN2.setText("    "+"Record raggiunto: "+Blocco2.Bd);
-            } else {
-                PN2.setText("    "+"Record Superato: "+Blocco2.Bd);
-            }if (Blocco2.pun < NewBloc1) {
-            BD2.setText("    "+"Record: "+NewBloc1);
-        } else if (Blocco2.pun == NewBloc1) {
-            BD2.setText("    "+"Record raggiunto: "+Blocco2.pun);
-        } else {
-            BD2.setText("    "+"Record Superato: "+Blocco2.pun);
-        }
-            if (Blocco2.Sc < NewScherm1) {
-                SC2.setText("    "+"Record: "+NewScherm1);
-            } else if (Blocco2.Sc == NewScherm1) {
-                SC2.setText("    "+"Record raggiunto: "+Blocco2.Sc);
-            } else {
-                SC2.setText("    "+"Record Superato: "+Blocco2.Sc);
-            }
-            break;
-        case "Difficile":
-            DIF1.setForeground(ColD);
-            DIF1.setForeground(ColD);
+                } else if (Blocco2.Bd == NewPun1) {
+                    PN2.setText("    " + "Record raggiunto: " + Blocco2.Bd);
+                } else {
+                    PN2.setText("    " + "Record Superato: " + Blocco2.Bd);
+                }
+                if (Blocco2.pun < NewBloc1) {
+                    BD2.setText("    " + "Record: " + NewBloc1);
+                } else if (Blocco2.pun == NewBloc1) {
+                    BD2.setText("    " + "Record raggiunto: " + Blocco2.pun);
+                } else {
+                    BD2.setText("    " + "Record Superato: " + Blocco2.pun);
+                }
+                if (Blocco2.Sc < NewScherm1) {
+                    SC2.setText("    " + "Record: " + NewScherm1);
+                } else if (Blocco2.Sc == NewScherm1) {
+                    SC2.setText("    " + "Record raggiunto: " + Blocco2.Sc);
+                } else {
+                    SC2.setText("    " + "Record Superato: " + Blocco2.Sc);
+                }
+                break;
+            case "Difficile":
+                DIFF.setForeground(ColD);
+                DIF1.setForeground(ColD);
 
-        if (Blocco2.Bd < NewPun2) {
-            PN2.setText("    "+"Record: "+NewPun2);
-        } else if (Blocco2.Bd == NewPun2) {
-            PN2.setText("    "+"Record raggiunto: "+Blocco2.Bd);
-        } else {
-            PN2.setText("    "+"Record Superato: "+Blocco2.Bd);
-        }if (Blocco2.pun < NewBloc2) {
-            BD2.setText("    "+"Record: "+NewBloc2);
-        } else if (Blocco2.pun == NewBloc2) {
-            BD2.setText("    "+"Record raggiunto: "+Blocco2.pun);
-        } else {
-            BD2.setText("    "+"Record Superato: "+Blocco2.pun);
+                if (Blocco2.Bd < NewPun2) {
+                    PN2.setText("    " + "Record: " + NewPun2);
+                } else if (Blocco2.Bd == NewPun2) {
+                    PN2.setText("    " + "Record raggiunto: " + Blocco2.Bd);
+                } else {
+                    PN2.setText("    " + "Record Superato: " + Blocco2.Bd);
+                }
+                if (Blocco2.pun < NewBloc2) {
+                    BD2.setText("    " + "Record: " + NewBloc2);
+                } else if (Blocco2.pun == NewBloc2) {
+                    BD2.setText("    " + "Record raggiunto: " + Blocco2.pun);
+                } else {
+                    BD2.setText("    " + "Record Superato: " + Blocco2.pun);
+                }
+                if (Blocco2.Sc < NewScherm2) {
+                    SC2.setText("    " + "Record: " + NewScherm2);
+                } else if (Blocco2.Sc == NewScherm2) {
+                    SC2.setText("    " + "Record raggiunto: " + Blocco2.Sc);
+                } else {
+                    SC2.setText("    " + "Record Superato: " + Blocco2.Sc);
+                }
+                break;
+            case "Impossibile":
+                DIF1.setForeground(ColI);
+                DIFF.setForeground(ColI);
+                if (Blocco2.Bd < NewPun3) {
+                    PN2.setText("    " + "Record: " + NewPun3);
+                } else if (Blocco2.Bd == NewPun3) {
+                    PN2.setText("    " + "Record raggiunto: " + Blocco2.Bd);
+                } else {
+                    PN2.setText("    " + "Record Superato: " + Blocco2.Bd);
+                }
+                if (Blocco2.pun < NewBloc3) {
+                    BD2.setText("    " + "Record: " + NewBloc3);
+                } else if (Blocco2.pun == NewBloc3) {
+                    BD2.setText("    " + "Record raggiunto: " + Blocco2.pun);
+                } else {
+                    BD2.setText("    " + "Record Superato: " + Blocco2.pun);
+                }
+                if (Blocco2.Sc < NewScherm3) {
+                    SC2.setText("    " + "Record: " + NewScherm3);
+                } else if (Blocco2.Sc == NewScherm3) {
+                    SC2.setText("    " + "Record raggiunto: " + Blocco2.Sc);
+                } else {
+                    SC2.setText("    " + "Record Superato: " + Blocco2.Sc);
+                }
+                break;
+
         }
-        if (Blocco2.Sc < NewScherm2) {
-            SC2.setText("    "+"Record: "+NewScherm2);
-        } else if (Blocco2.Sc == NewScherm2) {
-            SC2.setText("    "+"Record raggiunto: "+Blocco2.Sc);
-        } else {
-            SC2.setText("    "+"Record Superato: "+Blocco2.Sc);
-        }
-            break;
-        case "Impossibile":
-            DIF1.setForeground(ColI);
-            DIF1.setForeground(ColI);
-            if (Blocco2.Bd < NewPun3) {
-                PN2.setText("    "+"Record: "+NewPun3);
-            } else if (Blocco2.Bd == NewPun3) {
-                PN2.setText("    "+"Record raggiunto: "+Blocco2.Bd);
-            } else {
-                PN2.setText("    "+"Record Superato: "+Blocco2.Bd);
-            }if (Blocco2.pun < NewBloc3) {
-            BD2.setText("    "+"Record: "+NewBloc3);
-        } else if (Blocco2.pun == NewBloc3) {
-            BD2.setText("    "+"Record raggiunto: "+Blocco2.pun);
-        } else {
-            BD2.setText("    "+"Record Superato: "+Blocco2.pun);
-        }
-            if (Blocco2.Sc < NewScherm3) {
-                SC2.setText("    "+"Record: "+NewScherm3);
-            } else if (Blocco2.Sc == NewScherm3) {
-                SC2.setText("    "+"Record raggiunto: "+Blocco2.Sc);
-            } else {
-                SC2.setText("    "+"Record Superato: "+Blocco2.Sc);
-            }
-            break;
     }
 
     DIF1.setText(Blocco2.difficlt);
-    int l = Blocco2.L;
+    l = Blocco2.L;
     Bd=Blocco2.pun;
     pun=Blocco2.Bd;
     String Diff=Blocco2.difficlt;

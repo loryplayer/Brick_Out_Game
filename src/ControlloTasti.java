@@ -18,6 +18,7 @@ for(int la=0;la<tasto.length;la++)
 reset();
         new Thread(() -> {
             while (true) {
+                if(Blocco2.L!=1)
                 loop();
                 try {
                     Thread.sleep(100);

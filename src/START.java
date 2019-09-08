@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class START extends JPanel
 {
@@ -23,7 +22,7 @@ public class START extends JPanel
         DOM.setVisible(true);
         DIF.setSize(800,400);
         TXT.setVisible(true);
-        TXT.setText("Utilizzo: \nPer muovere la barra premere i tasti 'A' o 'D' oppure usando le frecce \nObiettivo:\nColpire tutti i quadratini, quindi distruggerli,\n per vincere cercando di non far cadere la palla sotto il livello della barra.");
+        TXT.setText("Utilizzo: \nPer muovere la barra premere i tasti 'A' o 'D', le frecce oppure i tasti laterali del mouse.\nPer avviare la partita premere invio oppure il tasto centrale del mouse. \nObiettivo:\nColpire tutti i quadrati, quindi distruggerli,\n per vincere, cercando di non far cadere la palla sotto il livello della barra.");
         if(NButton.getActionListeners().length==0)
         NButton.addActionListener(e -> F());
         if(DButton.getActionListeners().length==0)

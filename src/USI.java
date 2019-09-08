@@ -34,29 +34,34 @@ public class USI extends JPanel implements KeyListener
         Blocco2.fuori=0;
         Blocco2.F=1;
         Timer.Lo=0;
+        Blocco2.escape=0;
         INI=new JFrame("Seleziona Difficoltà");
         START ST = new START();
         INI.getContentPane().add(ST);
         INI.setVisible(true);
-        INI.setSize(800,400);
+        INI.setSize(1000,450);
         INI.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         INI.setResizable(false);
         try {
 
+            Blocco2.RECO.dispose();
             START.SG.dispose();
             Blocco2.TIM.dispose();
             Blocco2.TA.dispose();
-            Finale.SG.dispose();
-            Blocco2.RECO.dispose();
             Blocco2.US.dispose();
+            Finale.SG.dispose();
+
 
         }catch (NullPointerException ignored){}
-    } void RIP()
+    }
+
+    void RIP()
     {
         Blocco2.Es=0;
         Blocco2.L=0;
         Blocco2.p=0;
         Blocco2.fuori=0;
+        Blocco2.escape=0;
         try {
             Blocco2.US.dispose();
         }catch (NullPointerException ignored){}

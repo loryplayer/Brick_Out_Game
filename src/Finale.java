@@ -172,7 +172,7 @@ public class Finale extends JPanel {
         Blocco2.F=1;
         Timer.Lo=0;
         START.SG.dispose();
-        SG=new JFrame("Brick Out 1Game");
+        SG=new JFrame("Brick Out Game");
         Blocco2 BL = new Blocco2();
         SG.setBounds(-10,0,950,875);
         SG.getContentPane().add(BL);

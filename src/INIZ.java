@@ -96,7 +96,7 @@ public class INIZ extends JPanel implements KeyListener {
         START ST = new START();
         INI.getContentPane().add(ST);
         INI.setVisible(true);
-        INI.setSize(800,400);
+        INI.setSize(1000,450);
         INI.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         INI.setResizable(false);
         try {

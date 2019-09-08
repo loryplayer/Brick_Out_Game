@@ -56,21 +56,21 @@ private void loop()
             DIFF1.setForeground(ColN);
             if(Timer.NewPun1-Blocco2.Bd<=0)
             {
-                VALUTA1.setText("Record Raggiunto...  -> "+Blocco2.Bd);
+                VALUTA1.setText("Record Raggiunto..  -> "+Blocco2.Bd);
             }else
             {
                 VALUTA1.setText(Timer.NewPun1 - Blocco2.Bd + " / " + Timer.NewPun1);
             }
             if(Timer.NewBloc1-Blocco2.pun<=0)
             {
-                VALUTA2.setText("Record Raggiunto...  -> "+Blocco2.pun);
+                VALUTA2.setText("Record Raggiunto..  -> "+Blocco2.pun);
             }else
             {
                 VALUTA2.setText(Timer.NewBloc1-Blocco2.pun+" / "+Timer.NewBloc1);
             }
             if(Timer.NewScherm1-Blocco2.Sc<=0)
             {
-                VALUTA3.setText("Record Raggiunto...  -> "+Blocco2.Sc);
+                VALUTA3.setText("Record Raggiunto..  -> "+Blocco2.Sc);
             }else
             {
                 VALUTA3.setText(Timer.NewScherm1-Blocco2.Sc+" / "+Timer.NewScherm1);
@@ -81,21 +81,21 @@ private void loop()
             DIFF1.setForeground(ColD);
             if(Timer.NewPun2-Blocco2.Bd<=0)
             {
-                VALUTA1.setText("Record Raggiunto...  -> "+Blocco2.Bd);
+                VALUTA1.setText("Record Raggiunto..  -> "+Blocco2.Bd);
             }else
             {
                 VALUTA1.setText(Timer.NewPun2 - Blocco2.Bd + " / " + Timer.NewPun2);
             }
             if(Timer.NewBloc2-Blocco2.pun<=0)
             {
-                VALUTA2.setText("Record Raggiunto...  -> "+Blocco2.pun);
+                VALUTA2.setText("Record Raggiunto..  -> "+Blocco2.pun);
             }else
             {
                 VALUTA2.setText(Timer.NewBloc2-Blocco2.pun+" / "+Timer.NewBloc2);
             }
             if(Timer.NewScherm2-Blocco2.Sc<=0)
             {
-                VALUTA3.setText("Record Raggiunto...  -> "+Blocco2.Sc);
+                VALUTA3.setText("Record Raggiunto..  -> "+Blocco2.Sc);
             }else
             {
                 VALUTA3.setText(Timer.NewScherm2-Blocco2.Sc+" / "+Timer.NewScherm2);
@@ -106,21 +106,21 @@ private void loop()
             DIFF1.setForeground(ColI);
             if(Timer.NewPun3-Blocco2.Bd<=0)
             {
-                VALUTA1.setText("Record Raggiunto...  -> "+Blocco2.Bd);
+                VALUTA1.setText("Record Raggiunto..  -> "+Blocco2.Bd);
             }else
             {
                 VALUTA1.setText(Timer.NewPun3 - Blocco2.Bd + " / " + Timer.NewPun3);
             }
             if(Timer.NewBloc3-Blocco2.pun<=0)
             {
-                VALUTA2.setText("Record Raggiunto...  -> "+Blocco2.pun);
+                VALUTA2.setText("Record Raggiunto..  -> "+Blocco2.pun);
             }else
             {
                 VALUTA2.setText(Timer.NewBloc3-Blocco2.pun+" / "+Timer.NewBloc3);
             }
             if(Timer.NewScherm3-Blocco2.Sc<=0)
             {
-                VALUTA3.setText("Record Raggiunto...  -> "+Blocco2.Sc);
+                VALUTA3.setText("Record Raggiunto..  -> "+Blocco2.Sc);
             }else
             {
                 VALUTA3.setText(Timer.NewScherm3-Blocco2.Sc+" / "+Timer.NewScherm3);
