@@ -1,7 +1,12 @@
+import javafx.scene.media.AudioClip;
+
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.Key;
 import java.util.ArrayList;
 
@@ -39,7 +44,7 @@ Blocco2 extends JPanel implements KeyListener, MouseListener {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-}
+        }
 public  void paintComponent(Graphics g){
     barra.draw(g,this);
     barrapz1.draw(g,this);
@@ -65,11 +70,38 @@ public  void paintComponent(Graphics g){
                     difficlt = "Normale";
                     Palla.forEach(bloccoP1 -> {
                         if (bloccoP1.intersects(barra)) {
+                            try {
+                                AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rimbalzo.wav"));
+
+                                Clip clip=AudioSystem.getClip();
+                                clip.open(rot);
+                                clip.loop(0);
+                            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                                e.printStackTrace();
+                            }
                             bloccoP1.movY += 0.2;
                         } else if (bloccoP1.intersects(barrapz3) || bloccoP1.intersects(barrapz4)) {
+                            try {
+                                AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rimbalzo.wav"));
+
+                                Clip clip=AudioSystem.getClip();
+                                clip.open(rot);
+                                clip.loop(0);
+                            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                                e.printStackTrace();
+                            }
                             bloccoP1.movY += 0.5;
                             bloccoP1.movY *= -1;
                         } else if (bloccoP1.intersects(barrapz1) || bloccoP1.intersects(barrapz2)) {
+                            try {
+                                AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rimbalzo.wav"));
+
+                                Clip clip=AudioSystem.getClip();
+                                clip.open(rot);
+                                clip.loop(0);
+                            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                                e.printStackTrace();
+                            }
                             bloccoP1.movY += 0.3;
                             bloccoP1.movY *= -1;
                         }
@@ -120,6 +152,17 @@ public  void paintComponent(Graphics g){
                     PallaIn.movX *= -1;
                 }
                 if (PallaIn.y < 0 || PallaIn.intersects(barra)) {
+                    if(PallaIn.intersects(barra)) {
+                        try {
+                            AudioInputStream rot = AudioSystem.getAudioInputStream(new File("audio/rimbalzo.wav"));
+
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(rot);
+                            clip.loop(0);
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     PallaIn.movY *= -1;
                 }
             });
@@ -157,6 +200,15 @@ public  void paintComponent(Graphics g){
                 blocchi.forEach(blocco -> {
 
                     if (pallaDis.intersects(blocco) && !blocco.distrutto) {
+                        try {
+                            AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rottura.wav"));
+
+                            Clip clip=AudioSystem.getClip();
+                            clip.open(rot);
+                            clip.loop(0);
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                            e.printStackTrace();
+                        }
                         blocco.distrutto = true;
                         Bd += 5;
                         pun++;
@@ -165,21 +217,57 @@ public  void paintComponent(Graphics g){
                 });
                 blocchiR.forEach(blocco1 -> {
                     if (pallaDis.intersects(blocco1) && blocco1.resistente && !blocco1.distrutto) {
+                        try {
+                            AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rottura.wav"));
+
+                            Clip clip=AudioSystem.getClip();
+                            clip.open(rot);
+                            clip.loop(0);
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                            e.printStackTrace();
+                        }
                         blocco1.resistente = false;
                         pallaDis.movY *= -1;
                         pallaDis.movX *= -1;
 
                     } else if (pallaDis.intersects(blocco1) && !blocco1.resistente && blocco1.resistente1 && !blocco1.distrutto) {
+                        try {
+                            AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rottura.wav"));
+
+                            Clip clip=AudioSystem.getClip();
+                            clip.open(rot);
+                            clip.loop(0);
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                            e.printStackTrace();
+                        }
                         blocco1.resistente1 = false;
                         pallaDis.movY *= -1;
                         pallaDis.movX *= -1;
 
                     } else if (pallaDis.intersects(blocco1) && !blocco1.resistente && !blocco1.resistente1 && blocco1.resistente2 && !blocco1.distrutto) {
+                        try {
+                            AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rottura.wav"));
+
+                            Clip clip=AudioSystem.getClip();
+                            clip.open(rot);
+                            clip.loop(0);
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                            e.printStackTrace();
+                        }
                         blocco1.resistente2 = false;
                         pallaDis.movY *= -1;
                         pallaDis.movX *= -1;
 
                     } else if (pallaDis.intersects(blocco1) && !blocco1.distrutto && !blocco1.resistente && !blocco1.resistente1 && !blocco1.resistente2) {
+
+                        try {
+                            AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rottura.wav"));
+                            Clip clip=AudioSystem.getClip();
+                            clip.open(rot);
+                            clip.loop(0);
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                            e.printStackTrace();
+                        }
                         blocco1.distrutto = true;
                         blocco1.resistente = true;
                         blocco1.resistente1 = true;

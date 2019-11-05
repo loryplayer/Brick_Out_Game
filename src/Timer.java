@@ -249,7 +249,6 @@ void update() throws FileNotFoundException {
     Bd=Blocco2.pun;
     pun=Blocco2.Bd;
     String Diff=Blocco2.difficlt;
-    if(l ==1) {
         PrintWriter mo = new PrintWriter(filemo);
         if(Diff.equals("Normale")) {
             if (pun >  NewPun1) {
@@ -367,7 +366,7 @@ void update() throws FileNotFoundException {
             mo.flush();
             mo.close();
         }
-    }
+
     Tp=Blocco2.Tp;
 
 }

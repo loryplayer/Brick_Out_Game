@@ -1,10 +1,13 @@
 
 
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 
 public class INIZ extends JPanel implements KeyListener {
 
@@ -36,12 +39,35 @@ public class INIZ extends JPanel implements KeyListener {
     {
         {
             OU.x+=OU.movX;
+            OU.y += OU.movY;
             if((OU.x)>(getWidth()-OU.width)|| OU.x<0)
                 OU.movX*=-1;
-            if(OU.y<0||OU.intersects(barra)||(OU.y>320))
-                OU.movY*=-1;
-            OU.y+=OU.movY;
+            if(OU.y<0||OU.intersects(barra)||(OU.y>320)) {
+                if(OU.intersects(barra))
+                {
+                    try {
+                        AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rimbalzo.wav"));
+
+                        Clip clip=AudioSystem.getClip();
+                        clip.open(rot);
+                        clip.loop(0);
+                    } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                        e.printStackTrace();
+                    }
+                }
+                OU.movY *= -1;
+            }
+
             if (OU.intersects(X)&&(C!=1)) {
+                try {
+                    AudioInputStream rot= AudioSystem.getAudioInputStream(new File("audio/rottura.wav"));
+
+                    Clip clip=AudioSystem.getClip();
+                    clip.open(rot);
+                    clip.loop(0);
+                } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                    e.printStackTrace();
+                }
                 OUT();
             }
 
@@ -54,7 +80,7 @@ public class INIZ extends JPanel implements KeyListener {
         if(e.getKeyCode()==KeyEvent.VK_ENTER&&(p!=1)){
             p=1;
             new Thread(()-> {
-                while (true) {
+                while (C!=1) {
                     update();
                     try {
                         Thread.sleep(20);
